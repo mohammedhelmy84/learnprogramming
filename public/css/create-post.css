@@ -1,0 +1,12 @@
+#title{
+    color:white;
+    text-align: center;
+}
+
+#formFileLg:hover{
+    --_i: 100%;
+    color: #CC333F;
+    transition: .3s, -webkit-mask-size .3s .3s;
+    outline: 2px dotted yellow;
+} 
+
