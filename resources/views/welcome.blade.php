@@ -7,14 +7,14 @@
 <div class="container-fluid mt-5 maindiv">
 
     <header>
-        <div class="row vh-100">
-           <div class="row mt-5 py-1 text-center titlediv">
+        <div class="row vh-100  titlediv">
+           <div class="row mt-5 py-1 text-center">
             <div>
                 <div id="carouselExampleIndicators" class="carousel slide">
                     <div class="carousel-indicators">
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="active"  aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner mt-5">
                         @foreach($posts as $key=>$post) 
@@ -23,7 +23,7 @@
                         <h2 class="mb-1">{{$post->title}}</h2>
                         <p class="mb-1">{{$post->category->name}}</p>
                         <div class="col-sm-12 mb-5">
-                         <button id="btn-main">Find More</button>
+                         <a href="{{url('posts/'.$post->id)}}" class="btn btn-warning">تعلم الآن</a>
                        </div>
                       </div>
                       @endforeach
@@ -55,30 +55,14 @@
         <h2 class="my-4" style="color:#fff; text-align:center;">Our Services</h2>
         <p class="mx-auto mt-3 mb-5" style="background-color:#fff; width:75px; height:3px;"> </p>
        </div>
+       @foreach($posts as $key=>$post)
         <div class="col-md-3 mx-auto text-center">
           <img src="{{ asset('/assets/img/'.$post->pic) }}" alt="" width="35px" height="35px">
-          <h3 class="py-2">Learn HTML</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+          <h3 class="py-2">{{$post->title}}</h3>
+          <p>{{$post->text}}</p>
           <hr style="color:#fff;">
         </div>
-        <div class="col-md-3 mx-auto text-center">
-          <img src="{{ asset('/assets/img/'.$post->pic) }}" alt="" width="35px" height="35px">
-          <h3 class="py-2">Learn HTML</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
-          <hr style="color:#fff;">
-        </div>
-        <div class="col-md-3 mx-auto text-center">
-          <img src="{{ asset('/assets/img/'.$post->pic) }}" alt="" width="35px" height="35px">
-          <h3 class="py-2">Learn HTML</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
-          <hr style="color:#fff;">
-        </div>
-        <div class="col-md-3 mx-auto text-center">
-          <img src="{{ asset('/assets/img/'.$post->pic) }}" alt="" width="35px" height="35px">
-          <h3 class="py-2">Learn HTML</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
-          <hr style="color:#fff;">
-        </div>
+       @endforeach
       </div>
     </section>
     <section>

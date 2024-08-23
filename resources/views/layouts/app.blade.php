@@ -32,38 +32,39 @@
     <div id="app">
       
         <nav class="navbar fixed-top navbar-expand-sm" style="z-index:10; background-color: white;">
-            <div class="container" >
-            
-                <a class="navbar-brand" href="{{ url('/') }}">
+            <div class="container  text-left" >
+               <div class="row mx-auto">
+                <div class="col">
+                <a style="text-wrap: nowrap;" href="{{ url('/') }}">
                     {{ config('Learn Programming', 'Learn Programming') }}
                     <i class="las la-home" style="color:orangered; font-size:25px;"></i>
                 </a>
-                <a class="navbar-brand" href="{{ url('/home') }}">
+            </div>
+            <div class="col">
+                <a style="text-wrap: nowrap;" href="{{ url('/home') }}">
                     {{ config('Your Page', 'Your Page') }}
                     <i class="las la-address-card" style="color:hotpink; font-size:25px;"></i>
                 </a>
-                    <!-- Left Side Of Navbar -->
-                  
+            </div> <!-- Left Side Of Navbar -->
+            </div>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto" style="width:200px;">
+                    <ul class="navbar-nav mx-autobg-dark" style="width:200px;">
                         <!-- Authentication Links -->
                      
                         @guest
                     
-                        <div class="row">
-                            <div class="col">
+                        <div class="row ">
+                            <div class="col-3">
                             @if (Route::has('login'))
-                        
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}"><i class="las la-key">{{ __('Login') }} </i></a>
-                                   
+                                <li class="nav-item me-5">
+                                    <a class="nav-link" href="{{ route('login') }}"><i class="las la-key">{{ __('Login') }}</i></a>
                                 </li>
                             @endif
                            </div>
-                           <div class="col">
+                           <div class="col-3">
                             @if (Route::has('register'))
-                                <li class="nav-item">
+                                <li class="nav-item ms-5">
                                     <a class="nav-link" href="{{ route('register') }}"><i class="las la-file-alt">{{ __('Register') }}</i></a>
                                 </li>
                             @endif

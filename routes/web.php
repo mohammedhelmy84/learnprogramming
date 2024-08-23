@@ -3,6 +3,8 @@
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -27,7 +29,8 @@ Route::middleware('auth')->group(function () {
     // Route::Middleware('is_admin')->group(function(){
         Route::resource('categories', \App\Http\Controllers\CategoryController::class); 
         Route::resource('admin', \App\Http\Controllers\AdminController::class);
-        Route::resource('posts', \App\Http\Controllers\PostController::class);
+        Route::resource('posts', PostController::class);
+      // Route::get('/posts/details/{id}', [PostController::class, 'show']);
 
     // });
     //Route::resource('categories', \App\Http\Controllers\CategoryController::class)->middleware(\App\Http\Middleware\IsAdminMiddleware::class); 
@@ -36,6 +39,8 @@ Route::middleware('auth')->group(function () {
  
 
 });
+
+
 
 
 // Route::resource('categories', \App\Http\Controllers\CategoryController::class)->middleware('auth');

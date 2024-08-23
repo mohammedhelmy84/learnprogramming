@@ -73,7 +73,8 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $post = Post::where('id','=',$id)->first();
+        return view('posts.details',compact('post'));
     }
 
     /**
@@ -97,33 +98,20 @@ class PostController extends Controller
            'category_id'=>$request->input('category_id'),
         ]);
 
-        if($request->pic != ''){
-            $path = public_path().'/assets/img/';
-            if($post->pic != ''  && $post->pic != null){
-                $file_old = $path.$post->pic;
-                unlink($file_old);
-                return 1;
-           }
-            /*        
-            $path = public_path().'/assets/img/';
-  
-            //code for remove old file
-            if($post->pic != ''  && $post->pic != null){
-                 $file_old = $path.$post->pic;
-                 unlink($file_old);
+      
+            if($request->hasFile('pic')){
+                $path = public_path('assets/img/');
+                $file = $request->file('pic');
+                $extension = $file->getClientOriginalExtension();
+                $file_name = time().'.'.$extension;
+                $file->move($path,$file_name);
+                $post->pic = $file_name;
+                $post->save();
             }
-  
-            //upload new file
-            $file = $request->pic;
-            $filename = $file->getClientOriginalName();
-            $file->move($path, $filename);
-  
-            //for update in table
-            $post->update(['pic' => $filename]);
-            */
-       }
+            
+       
 
-        // return redirect()->route('posts.index');
+         return redirect()->route('posts.index');
  
     }
 
